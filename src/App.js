@@ -4,7 +4,7 @@ import StarshipList from "./components/StarshipList";
 
 function App() {
   return (
-    <Container>
+    <Container fluid className="bg-dark">
       <StarshipList />
     </Container>
   );

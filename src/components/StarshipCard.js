@@ -2,18 +2,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 function StarshipCard(props) {
   return (
-    <ListGroup as="ul" className="bg-secondary">
+    <ListGroup as="ul">
       <ListGroup.Item
         as="li"
-        className="d-flex justify-content-between align-items-start"
+        className="d-flex flex-column justify-content-between align-items-start p-4 my-4"
       >
-        {/* passengers={starship.passengers}
-            speed={starship.max_atmosphering_speed}
-            hyperdrive={starship.hyperdrive_rating}
-            mglt={starship.MGLT}
-            cargo={starship.cargo_capacity}
-            consumables={starship.consumables} */}
-
         <h4>Name: {props.name}</h4>
         <p>Model: {props.model}</p>
         <p>Ship Class: {props.shipClass}</p>
