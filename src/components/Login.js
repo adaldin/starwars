@@ -27,6 +27,7 @@ function Login(props) {
       password: "1234",
       fName: "prueba",
       lName: "zaq",
+      terms: false,
     },
   ]);
 
@@ -53,7 +54,8 @@ function Login(props) {
       event.preventDefault();
       event.stopPropagation();
     } else if (props.sign === "login") {
-      userData.filter((user) => {
+      event.preventDefault();
+      userData.find((user) => {
         if (user.email === email && user.password === password) {
           console.log(`Success: ${email} has logged on`);
         } else {
@@ -63,13 +65,15 @@ function Login(props) {
         return userData;
       });
     } else if (props.sign === "signup") {
-      userData.filter((user) => {
-        if (user.email === email && user.password === password) {
+      userData.find((user) => {
+        if (user.email === email) {
           event.preventDefault();
           console.log(`Error: ${email} is already registered on our bbdd`);
         } else {
+          event.preventDefault();
           const fName = form.fName.value.toLowerCase();
           const lName = form.lName.value.toLowerCase();
+          const terms = form.terms.checked;
           let newUser = {};
           for (const key in user) {
             newUser = {
@@ -78,6 +82,7 @@ function Login(props) {
               password: password,
               fName: fName,
               lName: lName,
+              terms: terms,
             };
           }
           if (newUser.id !== undefined) {
@@ -185,6 +190,14 @@ function Login(props) {
                   placeholder="desda33"
                   onChange={updateUser}
                 />
+                {/* terms */}
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    name="terms"
+                    label="Yes! I would like to receive by email special offers and updates about Lucasfilm Ltd. and other products and services from The Walt Disney Family of Companies."
+                  />
+                </Form.Group>
               </Form.Group>
               {/* submit */}
               <Button variant="primary" type="submit">

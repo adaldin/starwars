@@ -23,7 +23,19 @@ function Header(props) {
   }
   return (
     <Row className="justify-content-between bg-black">
-      <Col sm={{ span: 12, order: 1 }} md={{ span: 4, order: 2 }}>
+      <Col sm={{ span: 12, order: 1 }} md={{ span: 3, order: 1 }}>
+        <Stack
+          direction="horizontal"
+          className="justify-content-center p-1"
+          gap={2}
+        >
+          <i className="bi bi-facebook text-light"></i>
+          <i className="bi bi-instagram text-light"></i>
+          <i className="bi bi-twitter text-light"></i>
+          <i className="bi bi-youtube text-light"></i>
+        </Stack>
+      </Col>
+      <Col sm={{ span: 12, order: 2 }} md={{ span: 3, order: 2 }}>
         <Stack
           direction="horizontal"
           className="justify-content-center p-1"
@@ -51,13 +63,16 @@ function Header(props) {
         <Login show={popUp} handleClose={handleClose} sign={btnName} />;
       </Col>
       <Col
-        sm={{ span: 12, order: 2 }}
-        md={{ span: 8, order: 1 }}
-        className="d-flex justify-content-center justify-content-md-end"
+        sm={{ span: 12, order: 3 }}
+        md={{ span: 6, order: 1 }}
+        className="d-flex justify-content-center"
       >
-        <div style={{ width: "300px" }}>
-          <img src={Logo} className="img-fluid" alt="starwars-logo"></img>
-        </div>
+        <img
+          style={{ width: "300px" }}
+          src={Logo}
+          className="img-fluid"
+          alt="starwars-logo"
+        ></img>
       </Col>
     </Row>
   );
