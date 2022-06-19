@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import ListGroup from "react-bootstrap/ListGroup";
 import { nanoid } from "nanoid";
 import StarshipCard from "./StarshipCard";
 import Loading from "./Loading";
 import GetMore from "./GetMore";
+
 //ToDo:
 // arreglar que se sumen a la lista los 10 anteriores
+//tipografía de sw
+//welcome de más cosas
+// bg-img estrellas
+
 function StarshipList() {
   // states
   const [starships, setStarships] = useState([]);
@@ -46,20 +52,22 @@ function StarshipList() {
   }
 
   return (
-    <Container fluid className="p-3">
+    <Row className="p-3 bg-black justify-content-center align-items-center">
       {loading ? (
         <Loading />
       ) : (
         <>
-          {starships.map((starship) => (
-            <StarshipCard ship={starship} key={nanoid()} />
-          ))}
+          <ListGroup as="ul" className="d-flex">
+            {starships.map((starship) => (
+              <StarshipCard ship={starship} key={nanoid()} />
+            ))}
+          </ListGroup>
           <div className="d-grid gap-2">
             <GetMore handleClick={viewMore} name="View More" />
           </div>
         </>
       )}
-    </Container>
+    </Row>
   );
 }
 

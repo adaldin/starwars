@@ -8,8 +8,8 @@ import NavLink from "react-bootstrap/NavLink";
 
 export default function Menu() {
   return (
-    <Row as={Navbar} bg="dark" variant="dark">
-      <Container fluid className="bg-dark">
+    <Row as={Navbar} bg="black" variant="dark">
+      <Container fluid className="bg-black justify-content-center">
         <Col sm={12}>
           <Nav className="justify-content-center">
             <NavLink as={Link} to="/">
