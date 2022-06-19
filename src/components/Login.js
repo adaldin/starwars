@@ -22,9 +22,10 @@ function Login(props) {
   });
   const [userData, setUserData] = useState([
     {
+      id: nanoid(),
       email: "asd@qwe.com",
       password: "1234",
-      fName: "ale",
+      fName: "prueba",
       lName: "zaq",
     },
   ]);
@@ -46,7 +47,7 @@ function Login(props) {
 
   function submit(event) {
     const form = event.target;
-    const email = form.email.value;
+    const email = form.email.value.toLowerCase();
     const password = form.password.value;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -67,8 +68,8 @@ function Login(props) {
           event.preventDefault();
           console.log(`Error: ${email} is already registered on our bbdd`);
         } else {
-          const fName = form.fName.value;
-          const lName = form.lName.value;
+          const fName = form.fName.value.toLowerCase();
+          const lName = form.lName.value.toLowerCase();
           let newUser = {};
           for (const key in user) {
             newUser = {
@@ -89,49 +90,6 @@ function Login(props) {
     }
     setValidated(true);
   }
-
-  // function submit(event) {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-  //   const validation = validateData(form);
-  //   if (!validation) {
-  //     console.log(
-  //       `The direction ${email} doesn't exist in our bbdd. Please Sign up.`
-  //     );
-  //   } else if(validation &&props.sign==="login"){
-  //     console.log(`Success: ${email} is log on`)
-  //   } else if()
-  //   // else if (props.sign === "login") {
-  //   //   //filter in usedData any element (object) that has an user.email==email &&user.password==password
-  //   //   const dataExists = validateData(form);
-  //   // } else if (props.sign === "signup") {
-  //   //   //filter in usedData any element (object) that has an user.email==email &&user.password==password
-  //   //   //  if it doesnt exits: set userData object
-  //   //   // if exist: error, ya existe
-  //   // }
-  //   setValidated(true);
-  // }
-  // function validateData(form) {
-  //   // get inputs,
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-  //   const founded = false;
-
-  //   // filter them on user data
-  //   const filteredValues = userData.find((user) => {
-  //     if (user.email === email && user.password == password) {
-  //       founded = true;
-  //     }
-  //     return founded;
-  //   });
-  //   return founded;
-  // }
 
   return (
     <>
