@@ -20,16 +20,19 @@ function Login(props) {
     fName: "",
     lName: "",
   });
-  const [userData, setUserData] = useState([
-    {
-      id: nanoid(),
-      email: "asd@qwe.com",
-      password: "1234",
-      fName: "prueba",
-      lName: "zaq",
-      terms: false,
-    },
-  ]);
+  const [userData, setUserData] = useState(
+    JSON.parse(localStorage.getItem("userData")) || []
+  );
+  //   [
+  //   {
+  //     id: nanoid(),
+  //     email: "asd@qwe.com",
+  //     password: "1234",
+  //     fName: "prueba",
+  //     lName: "zaq",
+  //     terms: false,
+  //   },
+  // ]);
 
   const [validated, setValidated] = useState(false);
 

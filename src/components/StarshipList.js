@@ -28,7 +28,7 @@ function StarshipList() {
     axios
       .get(page)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setStarships(res.data.results);
         setPrevPage(res.data.previous);
         setNextPage(res.data.next);
@@ -41,14 +41,21 @@ function StarshipList() {
 
   //logic
   function viewMore() {
-    axios
-      .get(nextPage)
-      .then((res) => {
-        console.log(res);
-        setPage(nextPage);
-        setNextPage(res.data.next);
-      })
-      .catch((err) => console.log(err));
+    if (nextPage !== null) {
+      axios
+        .get(nextPage)
+        .then((res) => {
+          console.log(res);
+          setPage(nextPage);
+          setNextPage(res.data.next);
+          let moreShips = res.data.results;
+          // console.log(moreShips);
+          setStarships((prevShips) => prevShips.concat(moreShips));
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("No more Starships");
+    }
   }
 
   return (

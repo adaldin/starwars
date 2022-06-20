@@ -29,10 +29,18 @@ function Header(props) {
           className="justify-content-center p-1"
           gap={2}
         >
-          <i className="bi bi-facebook text-light"></i>
-          <i className="bi bi-instagram text-light"></i>
-          <i className="bi bi-twitter text-light"></i>
-          <i className="bi bi-youtube text-light"></i>
+          <Button variant="black">
+            <i className="bi bi-facebook text-light"></i>
+          </Button>
+          <Button variant="black">
+            <i className="bi bi-instagram text-light"></i>
+          </Button>
+          <Button variant="black">
+            <i className="bi bi-twitter text-light"></i>
+          </Button>
+          <Button variant="black">
+            <i className="bi bi-youtube text-light"></i>
+          </Button>
         </Stack>
       </Col>
       <Col sm={{ span: 12, order: 2 }} md={{ span: 3, order: 2 }}>
@@ -43,17 +51,17 @@ function Header(props) {
         >
           <Button
             name="login"
-            className="text-white"
+            className="text-muted fw-bold"
             variant="black"
             onClick={handlePopUp}
           >
             LOGIN
           </Button>
-          <div className="vr text-white border" />
-          <div className="vr text-white border" />
+          <div className="text-muted fw-bold">/</div>
+          <div className="text-muted fw-bold">/</div>
           <Button
             name="signup"
-            className="text-white"
+            className="text-muted fw-bold"
             variant="black"
             onClick={handlePopUp}
           >
