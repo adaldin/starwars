@@ -1,23 +1,32 @@
-import StarshipItem from "./StarshipItem";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
+import { useEffect } from "react";
 function StarshipsList(props) {
-  console.log("renderizado starshiplist");
+  // useEffect
+  useEffect(() => {
+    props.handleScroll();
+  }, []);
+  // function on  event window
+  window.onscroll = () => checkScroll();
+
+  function checkScroll() {
+    if (window.scrollY + window.innerHeight > document.body.scrollHeight) {
+      props.handleScroll();
+    }
+  }
   const ships = props.ships.map((ship, index) => {
     return (
-      <Link
+      <div
         key={nanoid()}
-        to={`/starships/${index + 1}`}
-        className="text-decoration-none"
+        className="bg-black bg-gradient opacity-75 rounded border"
       >
-        <StarshipItem
-          shipName={ship.name}
-          shipModel={ship.model}
-          shipPilots={ship.pilots}
-        ></StarshipItem>
-      </Link>
+        <Link to={`/starships/${index}`} className="text-decoration-none">
+          <h4 className="text-white p-4">{ship.name}</h4>
+        </Link>
+        <p className="text-white ps-4">{ship.model}</p>
+      </div>
     );
   });
-  return <div>{ships}</div>;
+  return <> {ships}</>;
 }
 export default StarshipsList;

@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import "./App.css";
+import { useState } from "react";
 import { Container } from "react-bootstrap";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./pages/Home.js";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
+import Home from "./pages/Home.js";
 import Header from "./components/header/Header.js";
-import Menu from "./components/starships/menu/Menu.js";
+import Menu from "./components/menu/Menu.js";
 import LogSign from "./components/logSign/LogSign.js";
 import StarshipsList from "./components/starships/StarshipList.js";
+import StarshipItem from "./components/starships/StarshipItem.js";
+import ProtectedRoute from "./components/protectedRoutes/ProtectedRoute";
 
 function App() {
-  console.log("renderizado app");
   const [starships, setStarships] = useState([]);
   const [next, setNext] = useState("https://swapi.dev/api/starships/");
-  // const [auth, setAuth] = useState(localStorage.getItem("auth"));
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")));
 
-  useEffect(() => {
+  function handleScroll() {
     let totalStarships = [];
     let addedShips;
 
@@ -25,41 +25,47 @@ function App() {
       axios
         .get(next)
         .then((res) => {
-          // console.log(res);
           addedShips = res.data.results;
           totalStarships = [...starships, ...addedShips];
           setStarships(totalStarships);
           setNext(res.data.next);
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>
+          console.log(`Starship Instance: ${err.response.data.detail}`)
+        );
+      // err.response.status
     }
-  }, [next]);
-
-  // // useEffect
-  // useEffect(() => {
-  //   let isAuth = JSON.parse(localStorage.getItem("auth"));
-  //   if (isAuth) {
-  //     setAuth(isAuth);
-  //   }
-  // }, []);
+  }
 
   return (
-    <Container fluid className="bg-black">
+    <Container fluid className="bg-black app">
       <BrowserRouter>
         <Header />
         <LogSign auth={auth} setAuth={setAuth} />
         <Menu />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route
-            exact
-            path="/starships"
-            element={<StarshipsList auth={auth} ships={starships} />}
-          ></Route>
-          <Route
-            path="/starships/:id"
-            element={<StarshipDetail ships={starships} />}
-          ></Route>
+          <Route path="/" element={<ProtectedRoute />}>
+            <Route
+              exact
+              path="/starships"
+              element={
+                <StarshipsList
+                  auth={auth}
+                  ships={starships}
+                  handleScroll={handleScroll}
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/starships/:id"
+              element={
+                <StarshipItem ships={starships} handleScroll={handleScroll} />
+              }
+            ></Route>
+          </Route>
+          <Route path="login" element={<LogSign />} />
         </Routes>
       </BrowserRouter>
     </Container>
@@ -67,10 +73,3 @@ function App() {
 }
 
 export default App;
-
-export function StarshipDetail() {
-  let { id } = useParams();
-  console.log("renderizado StarshipDetail");
-
-  return <p className="text-white">{id}</p>;
-}

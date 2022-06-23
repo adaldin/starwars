@@ -1,6 +1,5 @@
 function LogSign() {
   // position relative a header
-  console.log("renderizado logIn");
 
   return (
     <div className="d-flex gap-2 border">

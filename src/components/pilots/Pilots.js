@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "react-bootstrap/Card";
 
 function Pilots(props) {
-  console.log("renderizado pilots");
   const [pilots, setPilots] = useState([]);
   const nameURL = props.pilot;
 
@@ -26,9 +26,19 @@ function Pilots(props) {
   const pilot = pilots.map((p) => p);
 
   return (
-    <div>
-      <h6>{pilot}</h6>
-    </div>
+    <Card border="dark" style={{ width: "18rem" }}>
+      <div>
+        <img
+          src="https://starwars-visualguide.com/assets/img/characters/1.jpg"
+          className="roundedCircle"
+          alt="pilot-face"
+        />
+      </div>
+      <Card.Body>
+        <Card.Title>{pilot} pilot.name </Card.Title>
+        <Card.Text>pilot.homeworld</Card.Text>
+      </Card.Body>
+    </Card>
   );
 }
 export default Pilots;
