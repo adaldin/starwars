@@ -1,44 +1,50 @@
+// React
 import { useState, useEffect } from "react";
-import axios from "axios";
-import Card from "react-bootstrap/Card";
+// Nano id
+import { nanoid } from "nanoid";
 
 function Pilots(props) {
-  const [pilots, setPilots] = useState([]);
-  const nameURL = props.pilot;
+  const pilotList = props.ship.pilots;
 
-  function getPilotsNames() {
-    let totalPilots = [];
-    let pilotName;
-    axios
-      .get(nameURL)
-      .then((res) => {
-        pilotName = res.data.name;
-        totalPilots.push(pilotName);
-        setPilots(totalPilots);
-      })
-      .catch((err) => console.log(err));
-  }
+  // ***********+States
+  const [pilotsNames, setPilotsNames] = useState([]);
+
+  //   ***********+ UseEffects
+  useEffect(() => {
+    props.handleScroll(); //eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
-    getPilotsNames();
-  }, [nameURL]);
+    getPilotsNames(pilotList);
+  }, [pilotList]);
 
-  const pilot = pilots.map((p) => p);
+  // ***********+ Logic
+  async function getPilotsNames(pilotList) {
+    try {
+      let newPilot;
+      let totalPilots = [];
+      if (pilotList.length > 0) {
+        for (let i = 0; i < pilotList.length; i++) {
+          const r = await fetch(pilotList[i]);
+          const data = await r.json();
+          newPilot = data.name;
+          totalPilots.push(newPilot);
+        }
+      }
+      setPilotsNames(totalPilots);
+    } catch (err) {
+      console.error("Server Error", err);
+    }
+  }
 
   return (
-    <Card border="dark" style={{ width: "18rem" }}>
-      <div>
-        <img
-          src="https://starwars-visualguide.com/assets/img/characters/1.jpg"
-          className="roundedCircle"
-          alt="pilot-face"
-        />
-      </div>
-      <Card.Body>
-        <Card.Title>{pilot} pilot.name </Card.Title>
-        <Card.Text>pilot.homeworld</Card.Text>
-      </Card.Body>
-    </Card>
+    <>
+      {pilotsNames.length > 0 ? (
+        pilotsNames.map((pilot) => <p key={nanoid()}>{pilot}</p>)
+      ) : (
+        <p>No pilots for this starship</p>
+      )}
+    </>
   );
 }
 export default Pilots;

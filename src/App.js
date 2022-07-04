@@ -1,75 +1,157 @@
-import "./App.css";
-import { useState } from "react";
-import { Container } from "react-bootstrap";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import axios from "axios";
+// React
+import { useState, useEffect, useMemo } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Bootstrap
+import Container from "react-bootstrap/Container";
+
+// Components
 import Home from "./pages/Home.js";
 import Header from "./components/header/Header.js";
 import Menu from "./components/menu/Menu.js";
-import LogSign from "./components/logSign/LogSign.js";
-import StarshipsList from "./components/starships/StarshipList.js";
-import StarshipItem from "./components/starships/StarshipItem.js";
-import ProtectedRoute from "./components/protectedRoutes/ProtectedRoute";
+import StarshipsList from "./components/starships/StarhipList.js";
+import StarshipDetail from "./components/starships/StarshipDetail.js";
+import ProtectedRoute from "./components/protectedRoutes/ProtectedRoute.js";
+import LogOn from "./pages/LogOn.js";
+import AuthContext from "./components/authContext/AuthContext.js";
+
+// img
+import bgStars from "./assets/bg-body.jpeg";
 
 function App() {
+  // ***********+ States
   const [starships, setStarships] = useState([]);
-  const [next, setNext] = useState("https://swapi.dev/api/starships/");
-  const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")));
+  const [page, setPage] = useState("https://swapi.dev/api/starships");
+  const [loading, setLoading] = useState(true);
+  const [auth, setAuth] = useState(
+    JSON.parse(localStorage.getItem("auth")) || false
+  );
+  const [popUp, setPopUp] = useState(false);
+  const [btnLogin, setBtnLogin] = useState("");
 
-  function handleScroll() {
-    let totalStarships = [];
-    let addedShips;
+  const value = useMemo(() => ({ auth, setAuth }), [auth]);
 
-    if (next !== null) {
-      axios
-        .get(next)
-        .then((res) => {
-          addedShips = res.data.results;
-          totalStarships = [...starships, ...addedShips];
-          setStarships(totalStarships);
-          setNext(res.data.next);
-        })
-        .catch((err) =>
-          console.log(`Starship Instance: ${err.response.data.detail}`)
-        );
-      // err.response.status
+  // ***********+UseEffect
+  useEffect(() => {
+    getShips(); // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("auth", JSON.stringify(auth));
+  }, [auth]);
+
+  // ***********+Logic
+  async function getShips() {
+    try {
+      if (page !== null) {
+        const r = await fetch(page);
+        const d = await r.json();
+        let loadedShips = d.results;
+        let newShips = loadedShips.map((ship) => {
+          const url = ship.url;
+          const lastChart = url.slice(url.length - 3);
+          const numberId = parseInt(lastChart.replace("/", ""));
+          return { ...ship, id: numberId };
+        });
+        let totalShips = [...starships, ...newShips];
+        setStarships(totalShips);
+        setPage(d.next);
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error("Server Error", err);
     }
+  }
+  // modal
+  function handlePopUp(event) {
+    const { name } = event.target;
+    setPopUp((prevPopUp) => !prevPopUp);
+    setBtnLogin(name);
+  }
+
+  function handleClose() {
+    setPopUp((prevPopUp) => !prevPopUp);
   }
 
   return (
-    <Container fluid className="bg-black app">
-      <BrowserRouter>
-        <Header />
-        <LogSign auth={auth} setAuth={setAuth} />
-        <Menu />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/" element={<ProtectedRoute />}>
-            <Route
-              exact
-              path="/starships"
-              element={
-                <StarshipsList
-                  auth={auth}
-                  ships={starships}
-                  handleScroll={handleScroll}
-                />
-              }
-            ></Route>
-            <Route
-              exact
-              path="/starships/:id"
-              element={
-                <StarshipItem ships={starships} handleScroll={handleScroll} />
-              }
-            ></Route>
-          </Route>
-          <Route path="login" element={<LogSign />} />
-        </Routes>
-      </BrowserRouter>
-    </Container>
+    <AuthContext.Provider value={value}>
+      <Container
+        fluid
+        className="bg-black"
+        style={{ backgroundImage: `url(${bgStars})` }}
+      >
+        <BrowserRouter>
+          <Header
+            auth={auth}
+            setAuth={setAuth}
+            handlePopUp={handlePopUp}
+            handleClose={handleClose}
+            popUp={popUp}
+            btnLogin={btnLogin}
+          />
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Home auth={auth} setAuth={setAuth} />} />
+            <Route path="/" element={<ProtectedRoute auth={auth} />}>
+              <Route
+                path="/starships"
+                element={
+                  <StarshipsList
+                    ships={starships}
+                    handleScroll={getShips}
+                    loading={loading}
+                    auth={auth}
+                  />
+                }
+              />
+              <Route
+                path="/starships/:id"
+                element={
+                  <StarshipDetail ships={starships} handleScroll={getShips} />
+                }
+              />
+            </Route>
+            <Route path="login" element={<LogOn auth={auth} />} />
+          </Routes>
+        </BrowserRouter>
+      </Container>
+    </AuthContext.Provider>
   );
 }
-
 export default App;
+
+// ROADMAP
+// Protected routes to modal
+// Context para login               !!!HECHO
+// Condicional si auth true? render nombre del user +log out: componente loginUp
+// Validation bootstrap
+// Filter input para filtrar naves
+
+// A SOLUCIONAR
+// Pilots error                                            !!!HECHO
+// Films component                                          !!!HECHO
+// Chequear foundedData on login: siempre es false        !!!HECHO
+// Auth persistente en memoria                             !!!HECHO
+// Details pictures                                          !!!HECHO
+// problema de carga de ships por props on reaload             !!!HECHO
+// Fotos de pilotos
+// Fotos de films
+// Error:no pilots
+// test unitarios de app
+// regex para validar alfanumeric de password
+// Navigate to home on login !!!!!
+// validación bootstraP
+// Registro a ruta de log in i no a fallo
+
+// MAQUETACION
+// Install fuente d-din                                        !!!HECHO
+// Cambio de favicon                                            !!!HECHO
+// Bg bodycon foto de estrellas                               !!!HECHO
+// Detail como pide el sprint con foto grande             !!!HECHO
+// Header bg-estrellas                                       !!!HECHO
+// Modal log in: body puede ser success/error/form            !!!HECHO
+// parallax home                                            !!!HECHO
+// Home css animado texto                                   !!!HECHO
+// placeholder para img sin cargar
+// PÁGINA DE please log on
+// luces de cards individuales

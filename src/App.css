@@ -1,20 +1,13 @@
-.font-link {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color:#cbc8c8 ;
-  }
-   .table{
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
-    height:  72vh;
-    background-color: rgb(212, 212, 45);
-    display: block;
-  }
-/* Track */
-::-webkit-scrollbar-track {
-  background: #a92b2b;
+@font-face {
+    font-family:'D-DINExp' ;
+    src:local('D-DINExp'),url('./fonts/D-DINExp.otf'), format('otf');
 }
-.app{
-  overflow-y: hidden;
+@font-face {
+    font-family:'D-DINExp-Bold' ;
+    src:local('D-DINExp-Bold'),url('./fonts/D-DINExp-Bold.otf'), format('otf');
+}
+
+body {
+font-family: 'D-DINExp';
+
 }

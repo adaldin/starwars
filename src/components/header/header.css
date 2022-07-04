@@ -1,7 +1,8 @@
-.btn-close{
-    border: 0.5px solid white;
+.navbar .navbar-toggle .icon-bar {
+    background-color: white !important;
+  }
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url('../../assets/hamburguer.svg') !important;
 }
-.navbar-toggler-icon{
-    border: 0.5px solid white;
-    border-radius: 0.2rem;
-}
+
