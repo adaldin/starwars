@@ -119,39 +119,3 @@ function App() {
   );
 }
 export default App;
-
-// ROADMAP
-// Protected routes to modal
-// Context para login               !!!HECHO
-// Condicional si auth true? render nombre del user +log out: componente loginUp
-// Validation bootstrap
-// Filter input para filtrar naves
-
-// A SOLUCIONAR
-// Pilots error                                            !!!HECHO
-// Films component                                          !!!HECHO
-// Chequear foundedData on login: siempre es false        !!!HECHO
-// Auth persistente en memoria                             !!!HECHO
-// Details pictures                                          !!!HECHO
-// problema de carga de ships por props on reaload             !!!HECHO
-// Fotos de pilotos
-// Fotos de films
-// Error:no pilots
-// test unitarios de app
-// regex para validar alfanumeric de password
-// Navigate to home on login !!!!!
-// validación bootstraP
-// Registro a ruta de log in i no a fallo
-
-// MAQUETACION
-// Install fuente d-din                                        !!!HECHO
-// Cambio de favicon                                            !!!HECHO
-// Bg bodycon foto de estrellas                               !!!HECHO
-// Detail como pide el sprint con foto grande             !!!HECHO
-// Header bg-estrellas                                       !!!HECHO
-// Modal log in: body puede ser success/error/form            !!!HECHO
-// parallax home                                            !!!HECHO
-// Home css animado texto                                   !!!HECHO
-// placeholder para img sin cargar
-// PÁGINA DE please log on
-// luces de cards individuales
