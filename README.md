@@ -2,25 +2,25 @@
   <img src="https://user-images.githubusercontent.com/18453013/192301323-9e488780-2a24-40bb-9663-4c1f441a3c51.gif"/>
 </div>
 
-
 --------------------------------------------------
 # StarWars
-Remake of the classic [Tetris](https://en.wikipedia.org/wiki/Tetris) game, builded entirely in Vanilla JS, HTML and CSS for an exercise in a bootcamp. The idea was to work on the principles of DRY, BEM using ES6.
-> *Playing 'Tetris' for 15 minutes is like meditation.*
-> *Ezra Koenig*
+A website to register or log in if you have an account to see a list Star Wars ships and a detail page of each one. Builded in React, implementing React-Bootstrap, React-Router-v6, React-Scroll-Parallax & infinite scrolling.
+> *May the Force be with you.*
 
-## Ready to play? 🎮
-Take a look and have fun scoring!
+## Find your ship 🚀 
+Take a look, log in and navegate through the ships.
 <div align="center">
   <a href="https://tetrispractice.netlify.app" target="blank">
-   <img src="https://user-images.githubusercontent.com/18453013/192245542-8cd4a916-6658-45a7-99c0-b432ec9fd838.gif" /></a>
+   <img src="https://user-images.githubusercontent.com/18453013/192312057-3d90021c-e258-4246-8798-dadefe25698c.gif" /></a>
 </div>
+
+## API
+For this project it was used [SWAPI](https://swapi.dev/) for the data of each ship, and [StarWars Visual Guide](https://starwars-visualguide.com/#/) to collect images of each spaceship.
 
 ## Builded with ⚙️
 <div>
-<img src="https://img.icons8.com/external-those-icons-flat-those-icons/48/000000/external-HTML5-programming-and-development-those-icons-flat-those-icons.png"alt="html logo" width="40px"/>
-  <img src="https://img.icons8.com/color/48/000000/css3.png" alt="css3 logo, css logo"/>
-  <img src="https://img.icons8.com/fluency/48/000000/javascript.png"alt="js logo"/>
+<img src="https://img.icons8.com/color/48/000000/react-native.png"/>
+<img src="https://img.icons8.com/color/48/000000/bootstrap.png"/>
     </div>  
 
 ## Roadmap 🗺️
@@ -40,6 +40,5 @@ Upcoming features on this project:
 5. Open a Pull Request
 
 ## Authors ✍️
-* [@tejeoner34](http://github.com/tejeoner34)
-* [@adaldin](http://github.com/adaldin)
-* [@elenar10](https://github.com/elenar10)
+[@adaldin](http://github.com/adaldin)
+
