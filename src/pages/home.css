@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+.description--container{
+    z-index: -5;
+}
+
+/* html,
+body {
+    background-color: #796b6b;
+    background-image: url('../assets/bg-body.jpeg');
+} */
+
+
+/* parallax--- */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 200vh;
+  background: #000;
+}
+
+.headline {
+  font-family: 'D-DINExp-Bold';
+  font-weight: 100;
+  font-size: 3rem;
+}
+
+
+.inset {
+  position: absolute;
+  inset: 1;
+}
+.white {
+  color: rgb(255, 255, 255);
+}
+.gray {
+  color: rgb(208, 208, 208);
+}
+
+.full {
+  height: 100vh;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradient {
+  background: linear-gradient(rgba(14, 62, 151, 0.5) 50%, black);
+}
+

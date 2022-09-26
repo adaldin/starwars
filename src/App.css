@@ -1,5 +1,13 @@
-.font-link {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color:#cbc8c8 ;
-  }
+@font-face {
+    font-family:'D-DINExp' ;
+    src:local('D-DINExp'),url('./fonts/D-DINExp.otf'), format('otf');
+}
+@font-face {
+    font-family:'D-DINExp-Bold' ;
+    src:local('D-DINExp-Bold'),url('./fonts/D-DINExp-Bold.otf'), format('otf');
+}
+
+body {
+font-family: 'D-DINExp';
+
+}

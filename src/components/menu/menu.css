@@ -1,0 +1,39 @@
+.nav-link.active {
+    color: rgb(255, 255, 255) !important;
+    font-family: 'D-DINExp-Bold';
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid blue !important;
+    background-color: black !important;
+
+
+}
+.nav-link.active:hover {
+        color: rgb(255, 255, 255)
+    }
+.nav-link.active:focus {
+        border-bottom: 1px solid blue;
+    }
+.nav-link:hover{
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
+.nav-link:focus{
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.nav-link{
+    color: rgb(183, 177, 177);
+    transition: none;
+    border-left: 0.5px solid #6c757d !important;
+    border-right: 0.5px solid #6c757d !important;
+}
+.nav-tabs {
+    border-bottom: 0.5px solid #6c757d;
+}
