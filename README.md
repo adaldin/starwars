@@ -10,7 +10,7 @@ A website to register or log in if you have an account to see a list Star Wars s
 ## Find your ship 🚀 
 Take a look, log in and navegate through the ships.
 <div align="center">
-  <a href="https://tetrispractice.netlify.app" target="blank">
+  <a href="https://starwarsships.netlify.app" target="blank">
    <img src="https://user-images.githubusercontent.com/18453013/192312057-3d90021c-e258-4246-8798-dadefe25698c.gif" /></a>
 </div>
 
