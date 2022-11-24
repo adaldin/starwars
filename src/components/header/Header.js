@@ -1,26 +1,26 @@
-import "./header.css";
+import './header.css';
 // React
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 // Components
-import LogInUp from "../logInUp/LogInUp";
-import LogOut from "../logOut/LogOut";
+import LogInUp from '../logInUp/LogInUp';
+import LogOut from '../logOut/LogOut';
 // Bootstrap
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Stack from "react-bootstrap/Stack";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Stack from 'react-bootstrap/Stack';
 // img
-import logo from "../../assets/star_wars_logo.png";
-import logoSm from "../../assets/sw_logo_horiz.png";
-import magGlassIcon from "../../assets/icon_search-957a123fdb62.svg";
-import kidsIcon from "../../assets/icon_kids-dc39fc54f6c2.svg";
-import bgStars from "../../assets/bg-body.jpeg";
+import logo from '../../assets/star_wars_logo.png';
+import logoSm from '../../assets/sw_logo_horiz.png';
+import magGlassIcon from '../../assets/icon_search-957a123fdb62.svg';
+import kidsIcon from '../../assets/icon_kids-dc39fc54f6c2.svg';
+import bgStars from '../../assets/bg-body.jpeg';
 
 function Header(props) {
   let expand = false;
@@ -45,7 +45,7 @@ function Header(props) {
                   id={`offcanvasNavbarLabel-expand-${expand}`}
                   className="text-light"
                 >
-                  LOG IN // SIGN UP
+                  <LogInUp>LOG IN // SIGN UP</LogInUp>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body className="bg-black">
@@ -81,7 +81,7 @@ function Header(props) {
                         <img
                           src={kidsIcon}
                           alt="kids-icon"
-                          style={{ width: "30px" }}
+                          style={{ width: '30px' }}
                         />
                       </div>
                     </Button>
@@ -115,7 +115,7 @@ function Header(props) {
                       <img
                         src={kidsIcon}
                         alt="kids-icon"
-                        style={{ width: "30px" }}
+                        style={{ width: '30px' }}
                       />
                     </div>
                   </Button>
@@ -134,13 +134,13 @@ function Header(props) {
               <img
                 className="d-none d-lg-block mx-auto"
                 src={logo}
-                style={{ width: "250px" }}
+                style={{ width: '250px' }}
                 alt="star-wars-logo-lg"
               />
               <img
                 className="d-lg-none"
                 src={logoSm}
-                style={{ width: "200px" }}
+                style={{ width: '200px' }}
                 alt="star-wars-logo-sm"
               />
             </Link>
@@ -155,11 +155,11 @@ function Header(props) {
                 className="me-2"
                 aria-label="Search"
                 style={{
-                  backgroundColor: "#242424",
+                  backgroundColor: '#242424',
                   backgroundImage: `url(${magGlassIcon})`,
-                  backgroundSize: "1rem",
-                  backgroundPosition: "90% 50%",
-                  backgroundRepeat: "no-repeat",
+                  backgroundSize: '1rem',
+                  backgroundPosition: '90% 50%',
+                  backgroundRepeat: 'no-repeat',
                 }}
               />
             </Form>
