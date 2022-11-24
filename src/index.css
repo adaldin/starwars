@@ -1,5 +1,5 @@
 @font-face {
-  font-family:'D-DINExp' ;
+  font-family:'D-DINExp' sans-serif ;
   src:local('D-DINExp'),url('./assets/fonts/D-DINExp.otf'), format('otf');
 }
 @font-face {
@@ -8,7 +8,7 @@
 }
 body {
   margin: 0;
-  font-family: 'D-DINExp';
+  font-family: 'D-DINExp' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,3 +17,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
