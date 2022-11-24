@@ -3,8 +3,8 @@
 }
 @font-face {
   font-family:'D-DINExp' sans-serif;
-  src:url('./assets/fonts/D-DINExp.otf'), format('otf');
-  src:url('./assets/fonts/D-DINExp-Bold.otf'), format('otf');
+  src:url('../assets/fonts/D-DINExp.otf'), format('otf');
+  src:url('../assets/fonts/D-DINExp-Bold.otf'), format('otf');
 }
 
 .description--container{
