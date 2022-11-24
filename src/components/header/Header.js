@@ -45,7 +45,41 @@ function Header(props) {
                   id={`offcanvasNavbarLabel-expand-${expand}`}
                   className="text-light"
                 >
-                  <LogInUp>LOG IN // SIGN UP</LogInUp>
+                  {props.auth ? (
+                    <LogOut auth={props.auth} setAuth={props.setAuth} />
+                  ) : (
+                    <Stack
+                      direction="horizontal"
+                      gap={3}
+                      className="justify-content-end  d-flex"
+                    >
+                      <Button
+                        name="login"
+                        className="text-white fw-bold"
+                        variant="black"
+                        onClick={props.handlePopUp}
+                      >
+                        LOGIN
+                      </Button>
+                      <div className="text-white fw-bold">/</div>
+                      <div className="text-white fw-bold">/</div>
+                      <Button
+                        name="signup"
+                        className="text-white fw-bold"
+                        variant="black"
+                        onClick={props.handlePopUp}
+                      >
+                        SIGNUP
+                      </Button>
+                      <LogInUp
+                        show={props.popUp}
+                        handleClose={props.handleClose}
+                        sign={props.btnLogin}
+                        auth={props.auth}
+                        setAuth={props.setAuth}
+                      />
+                    </Stack>
+                  )}
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body className="bg-black">
@@ -56,6 +90,7 @@ function Header(props) {
                   <Nav.Link href="/starships" className="text-light">
                     STARSHIPS
                   </Nav.Link>
+                  <Nav.Link href="/starships" className="text-light"></Nav.Link>
                 </Nav>
                 <Col className="order-sm-1 order-lg-1">
                   <Stack
