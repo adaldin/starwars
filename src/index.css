@@ -1,14 +1,14 @@
 @font-face {
-  font-family:'D-DINExp' ;
+  font-family:'D-DINExp' sans-serif;
   src:local('D-DINExp'),url('./assets/fonts/D-DINExp.otf'), format('otf');
 }
 @font-face {
-  font-family:'D-DINExp-Bold' sans-serif;
+  font-family:'D-DINExp-Bold' sans-serif sans-serif;
   src:local('D-DINExp-Bold'),url('./assets/fonts/D-DINExp-Bold.otf'), format('otf');
 }
 body {
   margin: 0;
-  font-family: 'D-DINExp';
+  font-family: 'D-DINExp' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
