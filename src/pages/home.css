@@ -2,14 +2,10 @@
     box-sizing: border-box;
 }
 @font-face {
-  font-family:'D-DINExp' ;
-  src:local('D-DINExp'),url('./fonts/D-DINExp.otf'), format('otf');
+  font-family:'D-DINExp' sans-serif;
+  src:url('./assets/fonts/D-DINExp.otf'), format('otf');
+  src:url('./assets/fonts/D-DINExp-Bold.otf'), format('otf');
 }
-@font-face {
-  font-family:'D-DINExp-Bold' ;
-  src:local('D-DINExp-Bold'),url('./fonts/D-DINExp-Bold.otf'), format('otf');
-}
-
 
 .description--container{
     z-index: -5;
@@ -33,7 +29,8 @@ body {
 }
 
 .headline {
-  font-family: 'D-DINExp-Bold';
+  font-family: 'D-DINExp';
+  font-weight: bold;
   font-weight: 100;
   font-size: 3rem;
 }
